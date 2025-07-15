@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfsejq3xrj253"]
+
+[ext_resource type="Texture2D" uid="uid://6vyvjiof56p3" path="res://Assets/Crops/carrot.png" id="1_3n685"]
+[ext_resource type="PackedScene" uid="uid://cj03x2qxckicr" path="res://Scenes/components/collectable_component.tscn" id="2_657vl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5mxdy"]
+radius = 9.33928
+
+[node name="CarrotHarvest" type="Sprite2D"]
+y_sort_enabled = true
+scale = Vector2(3, 3)
+texture = ExtResource("1_3n685")
+hframes = 5
+frame = 1
+
+[node name="CollectableComponent" parent="." instance=ExtResource("2_657vl")]
+collectable_name = "carr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+position = Vector2(0, 2.66667)
+shape = SubResource("CircleShape2D_5mxdy")

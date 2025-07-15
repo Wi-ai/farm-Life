@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5j8tnd3ckjlw"]
+
+[ext_resource type="Texture2D" uid="uid://dbdxg1w3vyjj7" path="res://Assets/Crops/potato.png" id="1_rvrov"]
+[ext_resource type="PackedScene" uid="uid://cj03x2qxckicr" path="res://Scenes/components/collectable_component.tscn" id="2_mv48g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vul62"]
+radius = 7.66667
+
+[node name="potatoHarvest" type="Sprite2D"]
+y_sort_enabled = true
+scale = Vector2(3, 3)
+texture = ExtResource("1_rvrov")
+hframes = 5
+frame = 1
+
+[node name="CollectableComponent" parent="." instance=ExtResource("2_mv48g")]
+collectable_name = "potato"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_vul62")

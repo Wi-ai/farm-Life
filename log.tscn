@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0qypbruo7fhd"]
+
+[ext_resource type="Texture2D" uid="uid://c7xwrcy4m0ix7" path="res://Assets/gains.png" id="1_wvs5g"]
+[ext_resource type="PackedScene" uid="uid://cj03x2qxckicr" path="res://Scenes/components/collectable_component.tscn" id="2_cy4q2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy4q2"]
+atlas = ExtResource("1_wvs5g")
+region = Rect2(24, 16, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fomlt"]
+radius = 7.0
+
+[node name="Log" type="Sprite2D"]
+y_sort_enabled = true
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_cy4q2")
+
+[node name="CollectableComponent" parent="." instance=ExtResource("2_cy4q2")]
+collectable_name = "log"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+shape = SubResource("CircleShape2D_fomlt")
+debug_color = Color(0.280471, 0.540887, 0.865131, 0.42)

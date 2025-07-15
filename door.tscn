@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://xt4c0kuwaiu7"]
+
+[ext_resource type="Script" uid="uid://6248ojgpu82l" path="res://Scenes/houses/door.gd" id="1_ubl2c"]
+[ext_resource type="Texture2D" uid="uid://bhsamldqob7lr" path="res://Assets/d2.png" id="2_2xbtq"]
+[ext_resource type="PackedScene" uid="uid://cyqrm8txxseyu" path="res://Scenes/components/intaractable_component.tscn" id="3_ylx3c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g46ls"]
+atlas = ExtResource("2_2xbtq")
+region = Rect2(0, 15, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wesh"]
+atlas = ExtResource("2_2xbtq")
+region = Rect2(0, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0svu"]
+atlas = ExtResource("2_2xbtq")
+region = Rect2(0, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aouac"]
+atlas = ExtResource("2_2xbtq")
+region = Rect2(0, 0, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ixcb"]
+atlas = ExtResource("2_2xbtq")
+region = Rect2(0, 15, 16, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s07d2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g46ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wesh")
+}],
+"loop": false,
+"name": &"close_door",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0svu")
+}],
+"loop": false,
+"name": &"defult",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aouac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ixcb")
+}],
+"loop": false,
+"name": &"open_door",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13cot"]
+size = Vector2(20, 24.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubl2c"]
+size = Vector2(18, 43)
+
+[node name="Door" type="StaticBody2D"]
+script = ExtResource("1_ubl2c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(1.25, 1.6375)
+sprite_frames = SubResource("SpriteFrames_s07d2")
+animation = &"close_door"
+autoplay = "defult"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_13cot")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("3_ylx3c")]
+position = Vector2(8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_ubl2c")
+debug_color = Color(0.308686, 0.622234, 0.223897, 0.42)
